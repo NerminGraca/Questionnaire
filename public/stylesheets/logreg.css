@@ -1,0 +1,251 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic&subset=latin,latin-ext);
+/* MIXINS */
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300italic,400,700,900&subset=latin,latin-ext);
+
+text {
+    fill: #747474;
+    font: 400 12px "Lato";
+}
+
+/*** COMMON ***/
+body {
+    padding-top: 70px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    background: #43505E;
+}
+
+html, body {
+    height: 100%;
+}
+
+a:link, a:visited, a:hover, a:active {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+a.hovered-link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="number"], textarea {
+    border: 1px solid #D6D6D6;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    width: 100%;
+    padding: 10px 20px;
+    height: 50px;
+    margin-top: 25px;
+}
+
+input[type="email"].error {
+    background: #FFFCFC;
+    border: 1px solid #DBBABE;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 16px;
+    color: #583D3C;
+    line-height: 19px;
+}
+
+.form-horizontal {
+    background: #FFFFFF;
+    box-shadow: 0px 1px 1px 0px rgba(214, 214, 214, 0.5), 0px 2px 4px 0px rgba(0, 0, 0, 0.04);
+    margin: 5%;
+    padding: 10%;
+}
+
+.btn {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #FFFFFF;
+    height: 38px;
+    line-height: 17px;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.26);
+}
+
+.container {
+    width: 1200px;
+    background-color: #F5F8F9;
+    margin-top: 11px;
+    padding: 0;
+}
+
+.login-container, .register-container {
+    background-color: #43505E;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.login-container .logo-container, .register-container .logo-container {
+    margin-top: 100px;
+}
+
+.login-container .login-form, .login-container .register-form, .register-container .login-form, .register-container .register-form {
+    background: #FFFFFF;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    width: 450px;
+    margin: 50px auto 0;
+}
+
+.login-container .login-form .header, .login-container .register-form .header, .register-container .login-form .header, .register-container .register-form .header {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: #49607A;
+}
+
+.login-container .login-form .content, .login-container .register-form .content, .register-container .login-form .content, .register-container .register-form .content {
+    background: #F4F4F4;
+    border: 1px solid #DCDDDF;
+    -webkit-border-bottom-left-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    -moz-border-bottom-left-radius: 4px;
+    -moz-border-bottom-right-radius: 4px;
+    -ms-border-bottom-left-radius: 4px;
+    -ms-border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    text-align: center;
+    padding: 20px 25px 40px;
+}
+
+.login-container .login-form .content .sub-header.row, .login-container .register-form .content .sub-header.row, .register-container .login-form .content .sub-header.row, .register-container .register-form .content .sub-header.row {
+    text-align: center;
+    margin-top: -20px;
+    margin-left: -25px;
+    margin-right: -25px;
+}
+
+.login-container .login-form .content .sub-header.row .inactive-link, .login-container .register-form .content .sub-header.row .inactive-link, .register-container .login-form .content .sub-header.row .inactive-link, .register-container .register-form .content .sub-header.row .inactive-link {
+    width: 224px;
+    height: 56px;
+    background: #D6D6D6;
+    text-align: center;
+    padding-top: 19px;
+    cursor: pointer;
+    margin-left: -15px;
+}
+
+.login-container .login-form .content .sub-header.row .inactive-link a, .login-container .register-form .content .sub-header.row .inactive-link a, .register-container .login-form .content .sub-header.row .inactive-link a, .register-container .register-form .content .sub-header.row .inactive-link a {
+    font-size: 14px;
+    color: #fff;
+    line-height: 17px;
+}
+
+.login-container .login-form .content .sub-header.row .inactive-link a .light, .login-container .register-form .content .sub-header.row .inactive-link a .light, .register-container .login-form .content .sub-header.row .inactive-link a .light, .register-container .register-form .content .sub-header.row .inactive-link a .light {
+    font-style: italic;
+    font-weight: 300;
+}
+
+.login-container .login-form .content .sub-header.row .active-link, .login-container .register-form .content .sub-header.row .active-link, .register-container .login-form .content .sub-header.row .active-link, .register-container .register-form .content .sub-header.row .active-link {
+    width: 224px;
+    height: 56px;
+    background: #4A90E2;
+    text-align: center;
+    padding-top: 19px;
+    cursor: pointer;
+    margin-left: -15px;
+}
+
+.login-container .login-form .content .sub-header.row .active-link a, .login-container .register-form .content .sub-header.row .active-link a, .register-container .login-form .content .sub-header.row .active-link a, .register-container .register-form .content .sub-header.row .active-link a {
+    font-size: 14px;
+    color: #fff;
+    line-height: 17px;
+}
+
+.login-container .login-form .content .sub-header.row .active-link a .light, .login-container .register-form .content .sub-header.row .active-link a .light, .register-container .login-form .content .sub-header.row .active-link a .light, .register-container .register-form .content .sub-header.row .active-link a .light {
+    font-style: italic;
+    font-weight: 300;
+}
+
+.login-container .login-form .content .sub-header.row .active-link::after, .login-container .register-form .content .sub-header.row .active-link::after, .register-container .login-form .content .sub-header.row .active-link::after, .register-container .register-form .content .sub-header.row .active-link::after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    display: block;
+    width: 0;
+    bottom: -6px;
+    left: 109px;
+    border-color: #4A90E2 transparent;
+    border-width: 6px 6px 0;
+}
+
+.login-container .login-form .content .error-msg, .login-container .register-form .content .error-msg, .register-container .login-form .content .error-msg, .register-container .register-form .content .error-msg {
+    font-size: 12px;
+    color: #C95A57;
+    line-height: 15px;
+    float: right;
+}
+
+.login-container .login-form .content .buttons, .login-container .register-form .content .buttons, .register-container .login-form .content .buttons, .register-container .register-form .content .buttons {
+    margin-top: 35px;
+}
+
+.login-container .login-form .content .buttons .btn, .login-container .register-form .content .buttons .btn, .register-container .login-form .content .buttons .btn, .register-container .register-form .content .buttons .btn {
+    width: 130px;
+    height: 35px;
+}
+
+.login-container .login-form .content .buttons .forgot-link, .login-container .register-form .content .buttons .forgot-link, .register-container .login-form .content .buttons .forgot-link, .register-container .register-form .content .buttons .forgot-link {
+    line-height: 35px;
+    color: #99A2A5;
+}
+
+.login-container .register-form, .register-container .register-form {
+    margin-top: 30px;
+}
+
+.login-container .register-container {
+    width: 642px;
+}
+
+.register-container {
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.register-container .logo-container {
+    margin-top: 30px;
+}
+
+.sign-up-link {
+    margin-top: 20px;
+}
+
+.sign-in-link {
+    margin-top: 20px;
+}
+
+/*# custom css classes */
+.error {
+    color: red;
+}
+
+.help {
+    color: blue;
+}
+
+.hideTag {
+    display: none;
+}
+

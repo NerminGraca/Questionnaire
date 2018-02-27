@@ -1,0 +1,44 @@
+@* questionnaireResults Template File *@
+@(uq: UserQuestionnaire, answers: List[Answer])
+
+@main("Finished Questionnaire") {
+
+	@views.html.navigation("adminpanel")
+	
+	<div class="container white-background">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 white-background">
+				<div class="page-header">
+		          <h3 class="page-header-title">@uq.getQuestionnaire.getTitle finished by @uq.getUser.getFirstname @uq.getUser.getLastname</h3>
+		        </div>
+			</div>
+			<div class="col-lg-8 col-lg-offset-2 white-background" style="margin-bottom: 50px;">
+				<div class="col-lg-10 col-lg-offset-1">
+					@for(answer <- answers.sortWith(_.getQuestion.getIndex < _.getQuestion.getIndex)) {
+						@answer.getQuestion.getType().name match {
+							
+							case "TEXT_QUESTION" => {
+								@views.html.questions.results.textQuestionResult(answer)
+							}
+							
+							case "YES_NO_QUESTION" => {
+								@views.html.questions.results.yesNoQuestionResult(answer)
+							}
+							
+							case "SINGLE_CHOICE_QUESTION" => {
+								@views.html.questions.results.singleChoiceQuestionResult(answer)
+							}
+							
+							case "MULTIPLE_CHOICE_QUESTION" => {
+								@views.html.questions.results.multipleChoiceQuestionResult(answer)
+							}
+							
+							case default => {}
+						}
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+	
+}

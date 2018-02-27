@@ -1,0 +1,13 @@
+@* multipleChoiceQuestionImpl Template File *@
+@(question: Question, index: Integer)
+
+<div class="form-group has-error">
+	<h4>@(question.getIndex + 1): @question.getText</h4>
+	<input type="hidden" name="answers[@index].questionId" value="@question.getId">
+	<div class="checkbox selector-parent">
+		@for((oa, i) <- question.getOfferedAnswers.zipWithIndex) {
+			<label><input class="selector" type="checkbox" name="answers[@index].offeredAnswerIds[@i]" value="@oa.getId">@oa.getAnswer</label>
+		}
+	</div>
+</div>
+<hr>

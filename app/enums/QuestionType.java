@@ -1,0 +1,10 @@
+package enums;
+
+public enum QuestionType {
+	
+	TEXT_QUESTION,
+	YES_NO_QUESTION,
+	SINGLE_CHOICE_QUESTION,
+	MULTIPLE_CHOICE_QUESTION
+
+}

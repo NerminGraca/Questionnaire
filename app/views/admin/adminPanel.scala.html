@@ -1,0 +1,55 @@
+@* adminPanel Template File *@
+@(qList: List[Questionnaire], uqList: List[UserQuestionnaire])
+
+@main("Admin Panel") {
+
+	@views.html.navigation("adminpanel")
+	
+	<div class="container white-background">
+		<div class="row">
+			<div class="col-lg-10 col-lg-offset-1 white-background">
+				<div class="page-header">
+		        		<h3 class="page-header-title">Admin Panel
+		        			<a href="/createQuestionnaire" class="btn btn-primary btn-sm pull-right margin-right-20px">
+		          	  Create Questionnaire <span class="glyphicon glyphicon-plus"></span></a>
+		        		</h3>
+		        </div>
+			</div>
+			<div class="col-lg-10 col-lg-offset-1 white-background">
+				<ul class="nav nav-tabs">
+	              <li class="active"><a data-toggle="tab" href="#home">Active Questionnaires</a></li>
+	              <li><a data-toggle="tab" href="#menu1">Finished Questionnaires</a></li>
+	            </ul>
+	            
+	            <div class="tab-content">
+	              <div id="home" class="tab-pane fade in active">
+	                <ul class="list-group" style="margin-top:15px;">
+		    				@for(q <- qList) {
+		    					<li class="list-group-item">
+		    						<strong>@q.getTitle</strong>
+		    						<div class="btn-group pull-right">
+		    							<a href="@routes.Questionnaires.editQuestionnaire(q.getId)" class="btn btn-default btn-xs">EDIT</a>
+		    							<a href="@routes.Questionnaires.deleteQuestionnaire(q.getId)" 
+		    							class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?');">DELETE</a>
+		    						</div>
+		    					</li>
+		    				}
+		    			</ul>
+	              </div>
+
+	              <div id="menu1" class="tab-pane fade">
+	                <ul class="list-group" style="margin-top:15px;">
+	                  @for(uq <- uqList) {
+	                  	<a href="@routes.Questionnaires.questionnaireResults(uq.getId)" class="list-group-item">
+	                  	  <strong>@uq.getQuestionnaire.getTitle finished by @uq.getUser.getFirstname @uq.getUser.getLastname</strong>
+	                  	</a>
+	                  }
+	                </ul>
+	              </div>
+	            </div>
+			</div>
+			
+		</div>
+	</div>
+	
+}

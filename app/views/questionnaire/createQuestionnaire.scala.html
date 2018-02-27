@@ -1,0 +1,51 @@
+@* Create Questionnaire Template File *@
+
+@main("Create Questionnaire") {
+
+	@views.html.navigation("dashboard")
+	
+	<div class="container white-background">
+    		<div class="row">
+    			
+    			<div class="col-lg-8 col-lg-offset-2 white-background">
+	    			<div class="page-header">
+		          <h3 class="page-header-title">Create Questionnaire</h3>
+		        </div>
+	    		</div>
+	    		
+	    		<div class="col-lg-8 col-lg-offset-2 white-background" style="margin-bottom: 50px;">
+	    			<div class="row">
+		    			@helper.form(action = routes.Questionnaires.submitQuestionnaire()) {
+			    			<div class="col-lg-8 col-lg-offset-1">
+			    				<div class="form-group has-error">
+			    					<label>Questionnaire Title</label>
+		    						<input type="text" class="form-control picker has-error" name="title">
+		    					</div>
+			    			</div>
+			    			<div class="col-lg-2">
+			    				<button id="submitQuestionnaireButton" type="submit" class="btn btn-primary" style="margin-top: 25px;" disabled>Create Questionnaire</button>
+			    			</div>
+			    			<div class="col-lg-10 col-lg-offset-1"><hr></div>
+			    			<div id="questionsContent" class="col-lg-10 col-lg-offset-1"></div>
+		    			}
+		    			<div class="col-lg-8 col-lg-offset-1">
+		    				<div class="form-group">
+						  <select name="selector" class="form-control">
+						    @for(qt <- enums.QuestionType.values) {
+						      <option value="@qt.name">@qt.name</option>
+						    }
+						  </select>
+						</div>
+		    			</div>
+		    			<div class="col-lg-2">
+		    				<button id="addQuestionButton" class="btn btn-success btn-sm margin-right-20px" index="0">
+			          	  Add Question <span class="glyphicon glyphicon-plus"></span>
+			          	</button>
+		    			</div>
+		    		</div>
+	    		</div>
+    		</div>
+    </div>
+    <script src="@routes.Assets.versioned("javascripts/questions.js")" type="text/javascript"></script>
+
+}

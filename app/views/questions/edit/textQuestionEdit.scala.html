@@ -1,0 +1,17 @@
+@* textQuestionEdit Template File *@
+@(q: Question)
+
+<div id="question-@q.getIndex()" class="row">
+  <div class="col-lg-10">
+    <div class="form-group">
+      <input type="hidden" class="form-control" value="@q.getIndex()" name="questions[@q.getIndex()].index">
+      <input type="hidden" class="form-control" value="@q.getType" name="questions[@q.getIndex()].type">
+      <label><span class="question-index-label">@(q.getIndex + 1)</span>: Text Question</label>
+      <textarea class="form-control picker has-error" rows="3" name="questions[@q.getIndex()].text" style="resize: vertical;">@q.getText</textarea>
+      <br>
+    </div>
+  </div>
+  <div class="col-lg-2">
+    <a class="btn btn-danger btn-sm" onclick="removeQuestion('question-@q.getIndex()')" style="margin-top: 25px">REMOVE QUESTION</a>
+  </div>
+</div>

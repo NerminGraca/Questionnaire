@@ -1,0 +1,31 @@
+@(user: User, qList: List[Questionnaire])
+
+@main("Questionnaires") {
+
+	@views.html.navigation("dashboard")
+	
+    <div class="container white-background">
+    		<div class="row">
+    			<div class="col-lg-10 col-lg-offset-1 white-background">
+	    			<div class="page-header">
+		          <h3 class="page-header-title">Questionnaires</h3>
+		        </div>
+	    		</div>
+	    		<div class="col-lg-10 col-lg-offset-1 white-background">
+	    			@if(qList.isEmpty) {
+	    				<div class="well text-center">No active questionnaires.</div>
+	    			} else {
+	    				<ul class="list-group">
+		    				@for(q <- qList) {
+		    					<a @if(!user.isAdmin) {href="@routes.Questionnaires.questionnaire(q.getId)"} class="list-group-item">
+		    						<strong>@q.getTitle</strong>
+		    					</a>
+		    				}
+		    			</ul>
+	    			}
+	    		</div>
+    		</div>
+    </div>
+    
+
+}

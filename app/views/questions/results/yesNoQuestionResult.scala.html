@@ -1,0 +1,10 @@
+@* yesNoQuestionResult Template File *@
+@(answer: Answer)
+
+<h4>@(answer.getQuestion.getIndex + 1): @answer.getQuestion.getText</h4>
+@if(answer.isYes) {
+	<p style="padding-left:10px;">YES</p>
+} else {
+	<p style="padding-left:10px;">NO</p>
+}
+<hr>

@@ -1,0 +1,34 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /							controllers.Questionnaires.questionnaires()
+GET		/questionnaire				controllers.Questionnaires.questionnaire(id: Integer)
+GET		/createQuestionnaire			controllers.Questionnaires.createQuestionnaire()
+POST		/submitQuestionnaire			controllers.Questionnaires.submitQuestionnaire()
+GET		/editQuestionnaire			controllers.Questionnaires.editQuestionnaire(qId: Integer)
+GET		/deleteQuestionnaire			controllers.Questionnaires.deleteQuestionnaire(qId: Integer)
+POST		/updateQuestionnaire			controllers.Questionnaires.updateQuestionnaire(qId: Integer)
+POST		/finishQuestionnaire			controllers.Questionnaires.finishQuestionnaire()
+GET		/questionnaireResults		controllers.Questionnaires.questionnaireResults(uqId: Integer)
+GET		/appendQuestion				controllers.Questionnaires.appendQuestion(index: Integer, selectedType: String)
+
+GET		/successpage					controllers.Questionnaires.successpage(message: String)
+GET		/adminpanel					controllers.Questionnaires.adminPanel()
+
+GET     /register					controllers.Users.register()
+GET     /login						controllers.Users.login()
+GET		/login-fb					controllers.Users.fbLogin(fbId: String, fbUsername: String ?= null)
+POST    /register					controllers.Users.submitRegistration()
+POST    /login						controllers.Users.submitLogin()
+GET     /logout						controllers.Users.logout()
+GET		/resetPassword				controllers.Users.resetPassword()
+POST		/resetPassword				controllers.Users.submitResetPassword()
+GET		/newPassword					controllers.Users.newPassword(token: String)
+POST		/newPassword					controllers.Users.submitNewPassword(token: String)
+GET		/privacy-policy				controllers.Users.privacyPolicy()
+
+GET		/javascriptRoutes			controllers.JavascriptController.javascriptRoutes
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

@@ -1,0 +1,45 @@
+/***  NAVIGATION  ***/
+/* main navigation bar: */
+.navbar {
+    background: #4A90E2;
+    height: 56px;
+    border: 0px;
+}
+
+.navbar .container-fluid {
+    width: 1200px;
+}
+
+.navbar .container-fluid ul {
+    width: 943px;
+}
+
+.navbar .navbar-nav > li > a,
+.navbar
+.navbar-nav > li > a:hover {
+    font-weight: bold;
+    font-size: 12px;
+    color: #FFFFFF;
+    line-height: 12px;
+    padding-top: 19px;
+    padding-bottom: 21px;
+    padding-right: 15px;
+    margin: 0;
+}
+
+.navbar
+.navbar-nav > li > a.active {
+    padding-bottom: 21px;
+    color: #FFFFFF;
+    border-bottom: 4px solid #4BCFFF;
+}
+
+.navbar-default .navbar-brand > img {
+    width: 64px;
+    height: 32px;
+}
+
+.navbar-brand {
+    padding-right: 163px;
+    margin: 0;
+}

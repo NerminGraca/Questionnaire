@@ -1,0 +1,75 @@
+@* editQuestionnaire Template File *@
+@(questionnaire: Questionnaire)
+
+@main("Edit Questionnaire") {
+
+	@views.html.navigation("dashboard")
+	
+	<div class="container white-background">
+		<div class="row">
+		
+			<div class="col-lg-8 col-lg-offset-2 white-background">
+	    			<div class="page-header">
+		          <h3 class="page-header-title">Edit Questionnaire</h3>
+		        </div>
+	    		</div>
+	    		
+	    		<div class="col-lg-8 col-lg-offset-2 white-background" style="margin-bottom: 50px;">
+	    			<div class="row">
+	    				@helper.form(action = routes.Questionnaires.updateQuestionnaire(questionnaire.getId)) {
+	    					<div class="col-lg-8 col-lg-offset-1">
+			    				<div class="form-group">
+			    					<label>Questionnaire Title</label>
+		    						<input type="text" class="form-control picker" name="title" value="@questionnaire.getTitle">
+		    					</div>
+			    			</div>
+			    			<div class="col-lg-2">
+			    				<button id="submitQuestionnaireButton" type="submit" class="btn btn-primary" style="margin-top: 25px;">Update Questionnaire</button>
+			    			</div>
+			    			<div class="col-lg-10 col-lg-offset-1"><hr></div>
+			    			<div id="questionsContent" class="col-lg-10 col-lg-offset-1">
+			    				@for(question <- questionnaire.getQuestions.sortWith(_.getId < _.getId)) {
+			    					@question.getType().name match {
+			    						case "TEXT_QUESTION" => {
+										@views.html.questions.edit.textQuestionEdit(question)
+									}
+									
+									case "YES_NO_QUESTION" => {
+										@views.html.questions.edit.yesNoQuestionEdit(question)
+									}
+									
+									case "SINGLE_CHOICE_QUESTION" => {
+										@views.html.questions.edit.singleChoiceQuestionEdit(question)
+									}
+									
+									case "MULTIPLE_CHOICE_QUESTION" => {
+										@views.html.questions.edit.multipleChoiceQuestionEdit(question)
+									}
+									
+									case default => {}
+			    					}
+			    				}
+			    			</div>
+	    				}
+	    			</div>
+	    			<div class="col-lg-8 col-lg-offset-1">
+	    				<div class="form-group">
+					  <select name="selector" class="form-control">
+					    @for(qt <- enums.QuestionType.values) {
+					      <option value="@qt.name">@qt.name</option>
+					    }
+					  </select>
+					</div>
+	    			</div>
+	    			<div class="col-lg-2">
+	    				<button id="addQuestionButton" class="btn btn-success btn-sm margin-right-20px" index="@(questionnaire.getQuestions.reverse.head.getIndex + 1)">
+		          	  Add Question <span class="glyphicon glyphicon-plus"></span>
+		          	</button>
+	    			</div>
+	    		</div>
+		
+		</div>
+	</div>
+	<script src="@routes.Assets.versioned("javascripts/questions.js")" type="text/javascript"></script>
+	
+}

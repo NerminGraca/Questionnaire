@@ -1,0 +1,17 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic&subset=latin,latin-ext);
+/* MIXINS */
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300italic,400,700,900&subset=latin,latin-ext);
+
+text {
+    fill: #747474;
+    font: 400 12px "Lato";
+}
+body {
+    padding-top: 70px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    background: #43505E;
+}
+.white-background {
+	background: #feffff;
+}

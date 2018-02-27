@@ -1,0 +1,17 @@
+@* yesNoQuestion Template File *@
+@(index: Integer, qtype: String)
+
+<div id="question-@index" class="row">
+  <div class="col-lg-10">
+    <div class="form-group has-error">
+      <input type="hidden" class="form-control" value="@index" name="questions[@index].index">
+      <input type="hidden" class="form-control" value="@qtype" name="questions[@index].type">
+      <label><span class="question-index-label">@(index + 1)</span>: Yes/No Question</label>
+      <textarea class="form-control picker has-error" rows="3" name="questions[@index].text"></textarea>
+      <br>
+    </div>
+  </div>
+  <div class="col-lg-2">
+    <a class="btn btn-danger btn-sm" onclick="removeQuestion('question-@index')" style="margin-top: 25px">REMOVE</a>
+  </div>
+</div>

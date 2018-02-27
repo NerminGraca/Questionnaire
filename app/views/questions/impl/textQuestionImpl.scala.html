@@ -1,0 +1,9 @@
+@* textQuestionImpl Template File *@
+@(question: Question, index: Integer)
+
+<div class="form-group has-error">
+	<h4>@(question.getIndex + 1): @question.getText</h4>
+	<input type="hidden" name="answers[@index].questionId" value="@question.getId">
+	<textarea class="form-control selector has-error" rows="3" style="resize: vertical;" name="answers[@index].textAnswer"></textarea>
+</div>
+<hr>

@@ -1,0 +1,27 @@
+@* singleChoiceQuestion Template File *@
+@(index: Integer, qtype: String)
+
+<div id="question-@index" class="row">
+  <div class="col-lg-10">
+    <div class="form-group has-error">
+      <div id="scq-@index">
+        <input type="hidden" class="form-control" value="@index" name="questions[@index].index">
+        <input type="hidden" class="form-control" value="@qtype" name="questions[@index].type">
+        <label><span class="question-index-label">@(index + 1)</span>: Single Choice Question</label>
+        <textarea class="form-control picker has-error" rows="3" name="questions[@index].text"></textarea>
+        <label>Choice <span class="choice-label-@index">1</span></label>
+        <input type="text" class="form-control picker has-error" name="questions[@index].offeredAnswers[0].answer">
+        <label>Choice <span class="choice-label-@index">2</span></label>
+        <input type="text" class="form-control picker has-error" name="questions[@index].offeredAnswers[1].answer">
+      </div>
+      <br>
+      <div id="scq-@index-button">
+        <a class="btn btn-success btn-sm" onclick="addNewChoiceInput('scq-@index', 2, @index)">Add new choice <span class="glyphicon glyphicon-plus"></span></a>
+      </div>
+      <br>
+    </div>
+  </div>
+  <div class="col-lg-2">
+    <a class="btn btn-danger btn-sm" onclick="removeQuestion('question-@index')" style="margin-top: 25px">REMOVE</a>
+  </div>
+</div>

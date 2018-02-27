@@ -1,0 +1,48 @@
+@* questionnaire Template File *@
+@(questionnaire: Questionnaire, user: User)
+
+@main("Create Questionnaire") {
+	
+	@views.html.navigation("dashboard")
+	
+	<div class="container white-background">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 white-background">
+				<div class="page-header">
+		          <h3 class="page-header-title">@questionnaire.getTitle</h3>
+		        </div>
+			</div>
+			<div class="col-lg-8 col-lg-offset-2 white-background">
+				@helper.form(action = routes.Questionnaires.finishQuestionnaire()) {
+					<input type="hidden" name="questionnaireId" value="@questionnaire.getId">
+					@for((question, index) <- questionnaire.getQuestions.sortWith(_.getId < _.getId).zipWithIndex) {
+						@question.getType().name match {
+							
+							case "TEXT_QUESTION" => {
+								@views.html.questions.impl.textQuestionImpl(question, index)
+							}
+							
+							case "YES_NO_QUESTION" => {
+								@views.html.questions.impl.yesNoQuestionImpl(question, index)
+							}
+							
+							case "SINGLE_CHOICE_QUESTION" => {
+								@views.html.questions.impl.singleChoiceQuestionImpl(question, index)
+							}
+							
+							case "MULTIPLE_CHOICE_QUESTION" => {
+								@views.html.questions.impl.multipleChoiceQuestionImpl(question, index)
+							}
+							
+							case default => {}
+						}
+					}
+					<div class="text-center" style="margin-bottom:50px;">
+						<button id="saveQuestionnaireButton" type="submit" class="btn btn-primary" disabled>Submit Questionnaire</button>
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+	<script src="@routes.Assets.versioned("javascripts/questions.js")" type="text/javascript"></script>
+}

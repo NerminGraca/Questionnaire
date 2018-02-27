@@ -1,0 +1,68 @@
+@(selectedTab: String)(implicit user: User = helpers.SessionHelper.getAuthenticatedUser())
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+       <div class="navbar-brand"><img src='@routes.Assets.versioned("images/logo2.png")' alt="logo" /></div>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+          <li class="menu-item">
+            <a href='/' @if(selectedTab == "dashboard"){class="active"}>DASHBOARD</a>
+          </li>
+          @if(user.isAdmin) {
+          	<li class="menu-item">
+              <a href='@routes.Questionnaires.adminPanel()' @if(selectedTab == "adminpanel"){class="active"}>ADMIN PANEL</a>
+            </li>
+          }
+          <li class="pull-right">
+            @if(user.getFacebookId != null){
+            	  <a href='#' onclick="logout()">Logout</a>
+            }else{
+            	  <a href='@routes.Users.logout()'>Logout</a>
+            }
+          </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<script>
+window.fbAsyncInit = function() {
+	
+    FB.init({
+      appId      : '1999458266970525',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.12'
+    });
+      
+    FB.AppEvents.logPageView();
+
+  };
+
+  (function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=448927232192806';
+	  fjs.parentNode.insertBefore(js, fjs);
+	} (document, 'script', 'facebook-jssdk')
+  );
+  
+  function logout() {
+	  FB.getLoginStatus(function(response) {
+		  console.log(response)
+		  if (response.status === 'connected') {
+			  
+			  FB.logout(function(response) {
+				  window.location.href = "/logout";
+			  });
+		  } else {
+			console.log('error')
+		  }
+	  });
+	
+  }
+</script>
